@@ -1,0 +1,4 @@
+interface:
+  display_name: "ML Math"
+  short_description: "AI math derivation with code checks"
+  default_prompt: "Use $ml-math to explain and verify this machine learning formula derivation."
