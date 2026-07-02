@@ -13,6 +13,8 @@ It is designed for tasks where an AI assistant should not only explain formulas,
 - Creating toy visualizations for scalar functions, vector fields, trajectories, density transport, and optimization dynamics
 - Building intuition for topics such as KL divergence, ELBO, attention, diffusion, score matching, ODE/SDE models, flow matching, and normalizing flows
 
+The trigger surface is intentionally broad: use it for prompts such as "derive this," "prove that," "why does this formula work," "check my math," "is this equivalent to...," "gradient of...," and "verify this paper equation."
+
 ## Installation
 
 Clone this repository into your Codex skills directory:
@@ -55,6 +57,7 @@ Use $ml-math to audit this paper equation. Separate the paper's stated formula f
 - `references/ml-math-roadmap.md`: map of ML math topics and prerequisite concepts
 - `scripts/math_check.py`: reusable numerical checks for common derivation patterns
 - `scripts/plot_toy_flow.py`: toy 2D flow and vector-field visualization
+- `examples/eval-cases.md`: small forward-test prompts for skill revisions
 
 ## Script Examples
 

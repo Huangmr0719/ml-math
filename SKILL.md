@@ -1,6 +1,6 @@
 ---
 name: ml-math
-description: Assist with mathematical derivations in machine learning and artificial intelligence, especially when the user needs to understand formulas, verify reasoning, debug derivation steps, connect equations to code, or build small numerical and visual experiments. Use for ML/AI math involving probability, linear algebra, calculus, optimization, gradients, losses, KL/ELBO, attention, diffusion, flow models, ODE/SDE, information theory, kernels, and related formula reasoning.
+description: Assist with mathematical derivations in machine learning and artificial intelligence, especially when the user needs to understand formulas, verify reasoning, debug derivation steps, connect equations to code, or build small numerical and visual experiments. Use whenever the user asks to derive, prove, simplify, audit, verify, debug, explain why a formula works, check whether two formulas are equivalent, compute a gradient, inspect tensor shapes, or understand math in an ML/AI paper, even if the user does not explicitly say "math." Covers probability, linear algebra, calculus, optimization, gradients, losses, KL/ELBO, attention, diffusion, flow models, ODE/SDE, information theory, kernels, and related formula reasoning.
 ---
 
 # ML Math
@@ -52,12 +52,16 @@ Use this structure for non-trivial tasks:
 - **Notation**: symbols, dimensions, and assumptions.
 - **Derivation**: numbered steps with rule labels.
 - **Checks**: dimension/domain checks and fragile assumptions.
-- **Code Verification**: executed code summary, key output, and file path if a script/notebook was created.
-- **Visualization**: plot description or generated file path when applicable.
+- **Code Verification**: executed code summary, key output, and file path if the claim is testable or a script/notebook was created.
+- **Visualization**: plot description or generated file path when a visualization is useful.
 - **Intuition**: a short explanation in accessible language.
 - **Review Next**: prerequisite concepts or next experiment.
 
-For simple questions, keep the answer shorter but still include checks when the formula is easy to misuse.
+For simple or purely conceptual questions, keep the answer shorter. Omit **Code Verification** and **Visualization** when they are not applicable; do not include empty sections.
+
+## Runtime Assumptions
+
+The bundled scripts are zero-dependency Python 3 scripts. Use `numpy`, `sympy`, `torch`, or plotting libraries only when the current environment has them or when the user agrees to install them. If an optional library is unavailable, fall back to standard-library checks or provide runnable code with a clear note that it was not executed.
 
 ## Verification Scripts
 
@@ -73,10 +77,12 @@ python3 scripts/math_check.py --demo score-gaussian
 Use `scripts/plot_toy_flow.py` when a 2D vector field, particle flow, or trajectory plot would help:
 
 ```bash
-python3 scripts/plot_toy_flow.py --output /tmp/toy_flow.png
+python3 scripts/plot_toy_flow.py --output /tmp/toy_flow.svg
 ```
 
 Read `references/math-checklist.md` when auditing a long derivation. Read `references/ml-math-roadmap.md` when the user asks what background is needed or how topics connect.
+
+Use `examples/eval-cases.md` as a small forward-test set when checking whether revisions to this skill still produce derivations, checks, and code verification in the intended style.
 
 ## Guardrails
 
