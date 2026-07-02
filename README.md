@@ -1,8 +1,8 @@
 # ML Math
 
-`ml-math` is a Codex skill for mathematical derivation support in machine learning and artificial intelligence.
+`ml-math` is a portable agent instruction pack for mathematical derivation support in machine learning and artificial intelligence.
 
-It is designed for tasks where an AI assistant should not only explain formulas, but also audit each derivation step, check dimensions, connect the math to code, and verify claims with small executable experiments when possible.
+It is designed for tasks where an AI agent should not only explain formulas, but also audit each derivation step, check dimensions, connect the math to code, and verify claims with small executable experiments when possible.
 
 ## What It Helps With
 
@@ -17,13 +17,36 @@ The trigger surface is intentionally broad: use it for prompts such as "derive t
 
 ## Installation
 
-Clone this repository into your Codex skills directory:
+Install it for the agent you use:
+
+| Agent | Recommended install |
+| --- | --- |
+| Codex | `~/.codex/skills/ml-math` |
+| Claude Code | `~/.claude/skills/ml-math` plus optional `CLAUDE.md` |
+| OpenCode | `~/.config/opencode/skills/ml-math` or `~/.agents/skills/ml-math` |
+| Generic agents | Use `AGENTS.md` and `SKILL.md` as prompt/context files |
+
+Codex:
 
 ```bash
 git clone https://github.com/Huangmr0719/ml-math.git ~/.codex/skills/ml-math
 ```
 
-Restart Codex after installation so the skill can be discovered.
+Claude Code:
+
+```bash
+git clone https://github.com/Huangmr0719/ml-math.git ~/.claude/skills/ml-math
+```
+
+OpenCode:
+
+```bash
+git clone https://github.com/Huangmr0719/ml-math.git ~/.config/opencode/skills/ml-math
+```
+
+See [`docs/agent-installation.md`](docs/agent-installation.md) for project-local instructions, Claude `CLAUDE.md` usage, OpenCode `AGENTS.md` usage, and the included OpenCode subagent.
+
+Restart your agent after installation if it only discovers skills at startup.
 
 The bundled helper scripts are zero-dependency Python scripts.
 
@@ -33,6 +56,13 @@ Invoke the skill explicitly:
 
 ```text
 Use $ml-math to explain and verify this machine learning formula derivation:
+...
+```
+
+For agents without `$skill` syntax, use:
+
+```text
+Use the ml-math workflow in AGENTS.md and SKILL.md to explain and verify this formula derivation:
 ...
 ```
 
@@ -52,7 +82,11 @@ Use $ml-math to audit this paper equation. Separate the paper's stated formula f
 
 ## Included Resources
 
-- `SKILL.md`: the main Codex skill workflow
+- `SKILL.md`: the canonical skill workflow
+- `AGENTS.md`: compact shared instructions for agent systems
+- `CLAUDE.md`: Claude Code entry point that imports `AGENTS.md`
+- `.opencode/agents/ml-math.md`: OpenCode subagent definition
+- `docs/agent-installation.md`: install notes for Codex, Claude Code, OpenCode, and generic agents
 - `references/math-checklist.md`: checklist for auditing derivations
 - `references/ml-math-roadmap.md`: map of ML math topics and prerequisite concepts
 - `scripts/math_check.py`: reusable numerical checks for common derivation patterns
